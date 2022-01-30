@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Hawaiian-Wordle/static/css/main.f3f34998.css",
-    "main.js": "/Hawaiian-Wordle/static/js/main.256a3028.js",
+    "main.js": "/Hawaiian-Wordle/static/js/main.1afa145e.js",
     "static/js/787.3500bfec.chunk.js": "/Hawaiian-Wordle/static/js/787.3500bfec.chunk.js",
     "index.html": "/Hawaiian-Wordle/index.html",
     "main.f3f34998.css.map": "/Hawaiian-Wordle/static/css/main.f3f34998.css.map",
-    "main.256a3028.js.map": "/Hawaiian-Wordle/static/js/main.256a3028.js.map",
+    "main.1afa145e.js.map": "/Hawaiian-Wordle/static/js/main.1afa145e.js.map",
     "787.3500bfec.chunk.js.map": "/Hawaiian-Wordle/static/js/787.3500bfec.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f3f34998.css",
-    "static/js/main.256a3028.js"
+    "static/js/main.1afa145e.js"
   ]
 }
