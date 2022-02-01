@@ -42,6 +42,11 @@ function App() {
     return loadLanguageFromLocalStorage()
   })
 
+  const languageOptions = [
+    { id: "1", value: "eng", label: "English" },
+    { id: "2", value: "haw", label: "‘Ōlelo Hawai‘i" }
+  ];
+
   const TRACKING_ID = CONFIG.googleAnalytics; // YOUR_OWN_TRACKING_ID
 
   if (TRACKING_ID) {
@@ -120,7 +125,7 @@ function App() {
         />
       </div>
       <div className="flex w-80 mx-auto items-center mb-8">
-        <select onChange={e => setLanguage(e.target.value)}>
+        <select onChange={e => setLanguage(e.target.value)} value={language}>
           <option value="eng">English</option>
           <option value="haw">‘Ōlelo Hawai‘i</option>
         </select>
