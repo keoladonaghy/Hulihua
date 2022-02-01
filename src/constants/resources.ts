@@ -72,7 +72,7 @@ export const resources : any = {
                 },
                 INFO: {
                   TITLE: "Pehea e pāʻani ai",
-                  INSTRUCTIONS: (tries: string) => `He ${tries} kāu hoʻāʻo e koho i ka huaʻōlelo. Ma hope o kēlā me kēia koho ʻana, e hoʻololi ke kala o nā kile e hōʻike i ka pili o kāu koho ʻana i ka huaʻōlelo.`,
+                  INSTRUCTIONS: (tries: string) => `He ${tries} hoʻāʻo kāu e koho i ka huaʻōlelo. Ma hope o kēlā me kēia koho ʻana, e hoʻololi ke kala o nā kile e hōʻike i ka pili o kāu koho ʻana i ka huaʻōlelo.`,
                   EXPLAIN_GREEN: "Aia ka hua palapala 'L' ma ka hua'ōlelo a ma kahi kūpono.",
                   EXPLAIN_YELLOW: "Aia ka hua palapala 'O' i ka huaʻōlelo akā ma kahi hewa.",
                   EXPLAIN_GRAY: "ʻAʻole ka hua palapala 'N' i ka huaʻōlelo ma kekahi wahi."
