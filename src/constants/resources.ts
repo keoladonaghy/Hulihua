@@ -6,7 +6,8 @@ export const resources : any = {
           ALERTS: {
             NOT_FOUND: "Word not found.",
             LOST: (solution: string) => `You lost, the word was ${solution}.`,
-            COPIED: "Game copied to clipboard."
+            COPIED: "Game copied to clipboard.",
+            NEW_WORD: " until new word"
           },
           KEYS: {
             ENTER: "Enter",
@@ -48,7 +49,8 @@ export const resources : any = {
             ALERTS: {
               NOT_FOUND: "‘A‘ole i loa‘a ka hua‘ōlelo.",
               LOST: (solution: string) => `Ua nalowale ‘oe, ${solution} ka hua‘ōlelo.`,
-              COPIED: "Ua kope ʻia ka pāʻani i ka papa paʻi."
+              COPIED: "Ua kope ʻia ka pāʻani i ka papa paʻi.",
+              NEW_WORD: " a hiki i ka hua‘ōlelo hou"
             },
             KEYS: {
               ENTER: "Komo",

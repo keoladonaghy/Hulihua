@@ -6,7 +6,7 @@ import { Keyboard } from './components/keyboard/Keyboard'
 import { AboutModal } from './components/modals/AboutModal'
 import { InfoModal } from './components/modals/InfoModal'
 import { WinModal } from './components/modals/WinModal'
-import { isWordInWordList, isWinningWord, solution } from './lib/words'
+import { isWordInWordList, isWinningWord, solution, getTimeLeft } from './lib/words'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
@@ -41,6 +41,7 @@ function App() {
   const [language, setLanguage] = useState<string>(() => {
     return loadLanguageFromLocalStorage()
   })
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
   const TRACKING_ID = CONFIG.googleAnalytics; // YOUR_OWN_TRACKING_ID
 
@@ -62,6 +63,12 @@ function App() {
   useEffect(() => {
     saveLanguageToLocalStorage(language)
   }, [language])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeLeft(getTimeLeft())
+    }, 1000)
+  })
 
   const onChar = (value: string) => {
     if (currentGuess.length < CONFIG.wordLength && guesses.length < CONFIG.tries) {
@@ -125,6 +132,11 @@ function App() {
           <option value="haw">‘Ōlelo Hawai‘i</option>
         </select>
       </div>
+      { (isGameLost || isGameWon) ?
+          <div className="flex justify-center w-80 mx-auto w-80 mb-8 text-sm text-gray-500 ">
+            {timeLeft} {resources[language].APP.ALERTS.NEW_WORD}
+          </div> : null
+      }
       <Grid guesses={guesses} currentGuess={currentGuess} />
       <Keyboard
         onChar={onChar}
