@@ -3,15 +3,17 @@ import { getStatuses } from '../../lib/statuses'
 import { Key } from './Key'
 import { useEffect } from 'react'
 import { ORTHOGRAPHY } from '../../constants/orthography';
+import { resources } from '../../constants/resources'
 
 type Props = {
   onChar: (value: string) => void
   onDelete: () => void
   onEnter: () => void
   guesses: string[][]
+  language: string
 }
 
-export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
+export const Keyboard = ({ onChar, onDelete, onEnter, guesses, language }: Props) => {
   const charStatuses = getStatuses(guesses)
 
   const onClick = (value: KeyValue) => {
@@ -55,11 +57,11 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
       </div>
       <div className="flex justify-center">
         <Key width={65.4} value="ENTER" onClick={onClick}>
-          Enter
+          {resources[language].APP.KEYS.ENTER}
         </Key>
         {ORTHOGRAPHY.slice(Math.floor(ORTHOGRAPHY.length * .7), ORTHOGRAPHY.length).map((char) => <Key value={char} onClick={onClick} status={charStatuses[char]} />)}
         <Key width={65.4} value="DELETE" onClick={onClick}>
-          Delete
+          {resources[language].APP.KEYS.DELETE}
         </Key>
       </div>
     </div>

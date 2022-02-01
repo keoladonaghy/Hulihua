@@ -4,12 +4,14 @@ import { CheckIcon } from '@heroicons/react/outline'
 import { MiniGrid } from '../mini-grid/MiniGrid'
 import { shareStatus } from '../../lib/share'
 import { XCircleIcon } from '@heroicons/react/outline'
+import { resources } from '../../constants/resources'
 
 type Props = {
   isOpen: boolean
   handleClose: () => void
   guesses: string[][]
   handleShare: () => void
+  language: string
 }
 
 export const WinModal = ({
@@ -17,6 +19,7 @@ export const WinModal = ({
   handleClose,
   guesses,
   handleShare,
+  language
 }: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -73,11 +76,11 @@ export const WinModal = ({
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    You won!
+                    {resources[language].COMPONENTS.MODALS.WIN.TITLE}
                   </Dialog.Title>
                   <div className="mt-2">
                     <MiniGrid guesses={guesses} />
-                    <p className="text-sm text-gray-500">Great job.</p>
+                    <p className="text-sm text-gray-500">{resources[language].COMPONENTS.MODALS.WIN.GREAT_JOB}</p>
                   </div>
                 </div>
               </div>
@@ -90,7 +93,7 @@ export const WinModal = ({
                     handleShare()
                   }}
                 >
-                  Share
+                  {resources[language].COMPONENTS.MODALS.WIN.SHARE}
                 </button>
               </div>
             </div>

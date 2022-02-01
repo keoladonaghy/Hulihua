@@ -3,13 +3,15 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Cell } from '../grid/Cell'
 import { XCircleIcon } from '@heroicons/react/outline'
 import { CONFIG } from '../../constants/config';
+import {resources} from '../../constants/resources'
 
 type Props = {
   isOpen: boolean
-  handleClose: () => void
+  handleClose: () => void,
+  language: string
 }
 
-export const InfoModal = ({ isOpen, handleClose }: Props) => {
+export const InfoModal = ({ isOpen, handleClose, language }: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -59,13 +61,11 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    Pehea e pā‘ani ai - How to play
+                    {resources[language].COMPONENTS.MODALS.INFO.TITLE}
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Guess the word in {CONFIG.tries} tries. After each guess, the color
-                      of the tiles will change to show how close your guess was
-                      to the word.
+                      {resources[language].COMPONENTS.MODALS.INFO.INSTRUCTIONS(CONFIG.tries)}
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
@@ -76,7 +76,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                       <Cell value="I" />
                     </div>
                     <p className="text-sm text-gray-500">
-                      The letter L is in the word and in the correct spot.
+                      {resources[language].COMPONENTS.MODALS.INFO.EXPLAIN_GREEN}
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
@@ -87,7 +87,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                       <Cell value="A" />
                     </div>
                     <p className="text-sm text-gray-500">
-                      The letter O is in the word but in the wrong spot.
+                      {resources[language].COMPONENTS.MODALS.INFO.EXPLAIN_YELLOW}
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
@@ -98,7 +98,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                       <Cell value="A" />
                     </div>
                     <p className="text-sm text-gray-500">
-                      The letter N is not in the word in any spot.
+                      {resources[language].COMPONENTS.MODALS.INFO.EXPLAIN_GRAY}
                     </p>
                   </div>
                 </div>

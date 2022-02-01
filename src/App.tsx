@@ -10,7 +10,10 @@ import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
+  loadLanguageFromLocalStorage,
+  saveLanguageToLocalStorage,
 } from './lib/localStorage'
+import { resources } from './constants/resources'
 
 import { CONFIG } from './constants/config'
 import ReactGA from 'react-ga';
@@ -35,6 +38,10 @@ function App() {
     return loaded.guesses
   })
 
+  const [language, setLanguage] = useState<string>(() => {
+    return loadLanguageFromLocalStorage()
+  })
+
   const TRACKING_ID = CONFIG.googleAnalytics; // YOUR_OWN_TRACKING_ID
 
   if (TRACKING_ID) {
@@ -51,6 +58,10 @@ function App() {
       setIsWinModalOpen(true)
     }
   }, [isGameWon])
+
+  useEffect(() => {
+    saveLanguageToLocalStorage(language)
+  }, [language])
 
   const onChar = (value: string) => {
     if (currentGuess.length < CONFIG.wordLength && guesses.length < CONFIG.tries) {
@@ -91,9 +102,9 @@ function App() {
 
   return (
     <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
+      <Alert message={resources[language].APP.ALERTS.NOT_FOUND} isOpen={isWordNotFoundAlertOpen} />
       <Alert
-        message={`You lost, the word was ${solution}`}
+        message={resources[language].APP.ALERTS.LOST(solution)}
         isOpen={isGameLost}
       />
       <Alert
@@ -108,12 +119,19 @@ function App() {
           onClick={() => setIsInfoModalOpen(true)}
         />
       </div>
+      <div className="flex w-80 mx-auto items-center mb-8">
+        <select onChange={e => setLanguage(e.target.value)}>
+          <option value="eng">English</option>
+          <option value="haw">‘Ōlelo Hawai‘i</option>
+        </select>
+      </div>
       <Grid guesses={guesses} currentGuess={currentGuess} />
       <Keyboard
         onChar={onChar}
         onDelete={onDelete}
         onEnter={onEnter}
         guesses={guesses}
+        language={language}
       />
       <WinModal
         isOpen={isWinModalOpen}
@@ -126,14 +144,17 @@ function App() {
             setShareComplete(false)
           }, 2000)
         }}
+        language={language}
       />
       <InfoModal
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
+        language={language}
       />
       <AboutModal
         isOpen={isAboutModalOpen}
         handleClose={() => setIsAboutModalOpen(false)}
+        language={language}
       />
 
       <button
@@ -141,7 +162,7 @@ function App() {
         className="mx-auto mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         onClick={() => setIsAboutModalOpen(true)}
       >
-        About this game
+        {resources[language].COMPONENTS.MODALS.ABOUT.TITLE}
       </button>
     </div>
   )

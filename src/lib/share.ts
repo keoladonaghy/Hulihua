@@ -3,7 +3,7 @@ import { solutionIndex } from './words'
 
 export const shareStatus = (guesses: string[][]) => {
   navigator.clipboard.writeText(
-    ' Hulihua: He Nane ‘Ōlelo Hawai‘i ' +
+    'Hulihua: He Nane ‘Ōlelo Hawai‘i ' +
     solutionIndex +
     ' ' +
     guesses.length +

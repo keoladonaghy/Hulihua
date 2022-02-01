@@ -2,13 +2,16 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XCircleIcon } from '@heroicons/react/outline'
 import { CONFIG } from '../../constants/config'
+import { resources } from '../../constants/resources'
+import { ExtLink } from './ExtLink'
 
 type Props = {
   isOpen: boolean
   handleClose: () => void
+  language: string
 }
 
-export const AboutModal = ({ isOpen, handleClose }: Props) => {
+export const AboutModal = ({ isOpen, handleClose, language }: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -58,30 +61,35 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    About
+                    {resources[language].COMPONENTS.MODALS.ABOUT.TITLE}
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      This is an open source clone of the game Wordle adapted to {CONFIG.language} by <a href={CONFIG.authorWebsite} className="underline font-bold">{CONFIG.author}</a> -{' '}
-
-                      check out   <a
-                        href="https://github.com/hannahcode/wordle"
-                        className="underline font-bold"
-                      >the original code</a> by <a href="https://www.hannahmariepark.com/" className="underline font-bold">Hannah Park</a>
-                      {' '}or have a look at{' '}
-                      <a
-                        href="https://github.com/roedoejet/AnyLanguage-Wordle"
-                        className="underline font-bold"
-                      >
-                        Aidan Pine's fork
-                      </a>{' '}and customize it for another language! The words for this Wordle were sourced from <a href={CONFIG.wordListSourceLink} className="underline font-bold">{CONFIG.wordListSource}</a>. Or,
-                      {' you can also '}
-                      <a
-                        href="https://www.powerlanguage.co.uk/wordle/"
-                        className="underline font-bold"
-                      >
-                        play the original here
-                      </a>
+                    {resources[language].COMPONENTS.MODALS.ABOUT.START(CONFIG.language)}
+                    <ExtLink
+                      url={CONFIG.authorWebsite}
+                      text={CONFIG.author} />
+                    {resources[language].COMPONENTS.MODALS.ABOUT.CHECKOUT}
+                    <ExtLink
+                      url="https://github.com/hannahcode/wordle"
+                      text={resources[language].COMPONENTS.MODALS.ABOUT.ORIGINAL_CODE} />
+                    {resources[language].COMPONENTS.MODALS.ABOUT.BY}
+                    <ExtLink
+                      url="https://www.hannahmariepark.com/"
+                      text="Hannah Park" />
+                    {resources[language].COMPONENTS.MODALS.ABOUT.LOOK_AT}
+                    <ExtLink
+                      url="https://github.com/roedoejet/AnyLanguage-Wordle"
+                      text="Aidan Pine's fork" />
+                      {resources[language].COMPONENTS.MODALS.ABOUT.CUSTOMIZE}
+                      {resources[language].COMPONENTS.MODALS.ABOUT.WORD_SOURCE}
+                      <ExtLink
+                      url={CONFIG.wordListSourceLink}
+                      text={CONFIG.wordListSource} />
+                      {resources[language].COMPONENTS.MODALS.ABOUT.PLAY_ORIGINAL}
+                      <ExtLink
+                      url="https://www.powerlanguage.co.uk/wordle/"
+                      text={resources[language].COMPONENTS.MODALS.ABOUT.ORIGINAL_LINK} />
                     </p>
                   </div>
                 </div>
