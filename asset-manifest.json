@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.e3a9d179.css",
-    "main.js": "/static/js/main.d0d020a3.js",
+    "main.css": "/static/css/main.63de8e49.css",
+    "main.js": "/static/js/main.247a5c77.js",
     "static/js/787.3500bfec.chunk.js": "/static/js/787.3500bfec.chunk.js",
     "static/media/BCSans-Bold.woff": "/static/media/BCSans-Bold.252ecf87ea37c93b293c.woff",
     "static/media/BCSans-BoldItalic.woff": "/static/media/BCSans-BoldItalic.73ed5137b2c4a42b754f.woff",
     "static/media/BCSans-Italic.woff": "/static/media/BCSans-Italic.9c3be03a06d30a6ecff0.woff",
     "static/media/BCSans-Regular.woff": "/static/media/BCSans-Regular.0079ea8e42d4e81a13d2.woff",
     "index.html": "/index.html",
-    "main.e3a9d179.css.map": "/static/css/main.e3a9d179.css.map",
-    "main.d0d020a3.js.map": "/static/js/main.d0d020a3.js.map",
+    "main.63de8e49.css.map": "/static/css/main.63de8e49.css.map",
+    "main.247a5c77.js.map": "/static/js/main.247a5c77.js.map",
     "787.3500bfec.chunk.js.map": "/static/js/787.3500bfec.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3a9d179.css",
-    "static/js/main.d0d020a3.js"
+    "static/css/main.63de8e49.css",
+    "static/js/main.247a5c77.js"
   ]
 }
